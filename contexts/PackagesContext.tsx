@@ -120,6 +120,9 @@ export function PackagesProvider({ children }: { children: React.ReactNode }) {
           text1: "Success",
           text2: "Package status updated",
         });
+        console.log(
+          `Package status updated, id: ${id}, newStatus: ${newStatus}`
+        );
       } catch (error) {
         Toast.show({
           type: "error",
