@@ -1,50 +1,112 @@
-# Welcome to your Expo app 👋
+# Logistics Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile application for tracking logistics and shipments, built with Expo and TypeScript. Currently using sample data for demonstration purposes.
 
-## Get started
+## Features
 
-1. Install dependencies
+- Package tracking dashboard with real-time status updates
+- Detailed package information view
+- Status update functionality
+- Customizable settings with dynamic font scaling
+- Modern, accessible UI design
+- Cross-platform support (iOS & Android)
 
-   ```bash
-   npm install
-   ```
+## Current Implementation
 
-2. Start the app
+This is a demonstration version that uses sample data to showcase the functionality. The app includes:
 
-   ```bash
-   npx expo start
-   ```
+- Pre-populated package data for testing and demonstration
+- Simulated status updates
+- Mock tracking information
+- Sample delivery routes and timestamps
 
-In the output, you'll find options to open the app in a
+To implement with real data, you would need to:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+1. Replace the mock data in `contexts/PackagesContext` with your API integration
+2. Update the data models to match your backend schema
+3. Implement proper authentication if required
+4. Add real-time updates for package status changes
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Tech Stack
 
-## Get a fresh project
+- [React Native](https://reactnative.dev/) - Mobile framework
+- [Expo](https://expo.dev/) - Development platform
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Expo Router](https://docs.expo.dev/routing/introduction/) - File-based routing
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/) - Local data persistence
+- [React Native Toast Message](https://github.com/calintamas/react-native-toast-message) - Toast notifications
 
-When you're ready, run:
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or newer)
+- [Expo Go](https://expo.dev/client) app on your mobile device or simulator
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run reset-project
+git clone [your-repo-url]
+cd LogisticsTracker
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
 
-## Learn more
+```bash
+bun install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. Start the development server:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+bun start
+```
 
-## Join the community
+4. Open the app:
+   - 📱 Scan the QR code with Expo Go (Android) or Camera app (iOS)
+   - 🖥️ Press 'i' for iOS simulator or 'a' for Android emulator
 
-Join our community of developers creating universal apps.
+## Project Structure
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```
+LogisticsTracker/
+├── app/                 # Application screens and routing
+├── assets/             # Static assets (images, fonts)
+├── components/         # Reusable UI components
+├── contexts/          # React Context providers
+└── types/             # TypeScript type definitions
+```
+
+## Features in Detail
+
+### Package Tracking
+
+- Real-time status updates
+- Comprehensive package details
+- Status history
+
+### Font Scaling
+
+- Dynamic text size adjustment
+- System font size integration
+- Screen-specific font scaling control
+
+### Settings
+
+- Font scaling toggle
+- System settings integration
+- Live text preview
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
