@@ -1,29 +1,60 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { FontScalingProvider } from "@/contexts/FontScalingContext";
+import { PackagesProvider } from "@/contexts/PackagesContext";
+import { useFonts } from "expo-font";
+import { Stack } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useCallback } from "react";
+import { View } from "react-native";
+import Toast from "react-native-toast-message";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  const [fontsLoaded] = useFonts({
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <PackagesProvider>
+      <FontScalingProvider>
+        <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+          <Stack>
+            <Stack.Screen
+              name="index"
+              options={{
+                title: "Dashboard",
+              }}
+            />
+            <Stack.Screen
+              name="package/[id]"
+              options={{
+                title: "Package Details",
+              }}
+            />
+            <Stack.Screen
+              name="update-status/[id]"
+              options={{
+                title: "Update Status",
+              }}
+            />
+            <Stack.Screen
+              name="settings"
+              options={{
+                title: "Settings",
+              }}
+            />
+          </Stack>
+        </View>
+        <Toast />
+      </FontScalingProvider>
+    </PackagesProvider>
   );
 }
